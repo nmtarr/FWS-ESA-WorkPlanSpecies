@@ -1,0 +1,125 @@
+{
+  "definitions": {
+    "items": {
+      "$id": "#items",
+      "type": [
+        "object",
+        "array"
+      ],
+      "title": "Generic container for items in a dataset",
+      "description": "A JSON array or object property containing one or more items in a dataset or data structure within a dataset."
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://data.usgs.gov/property_registry/",
+  "type": [
+    "object",
+    "array"
+  ],
+  "title": "Dataset of species summary records from the IUCN Red List",
+  "description": "A dataset containing summary records pulled from querying the IUCN Red List API. Items can indicate a negative search result. Contains a mix of higher level standard properties and custom properties. Data were assembled using a search function build into the experimental bispy software package (https://github.com/usgs-bcb/bispy).",
+  "default": null,
+  "items": {
+    "$ref": "#/definitions/items",
+    "properties": {
+      "processing_metadata": {
+        "$ref": "common_properties.json#/definitions/processing_metadata"
+      },
+      "parameters": {
+        "$ref": "common_properties.json#/definitions/parameters",
+        "properties": {
+          "Scientific Name": {"$ref": "common_properties.json#/definitions/Scientific Name"},
+          "Name Source": {
+            "$id": "#Name Source",
+            "type": "string",
+            "title": "Source of a name used as a parameter",
+            "description": "A string denoting the source for the scientific name used in the IUCN Red List search. Useful for determining the provenance of the name used.",
+            "examples": [
+              "Lookup Name",
+              "Valid ITIS Scientific Name"
+            ]
+          }
+        }
+      },
+      "iucn_species_summary": {
+        "$id": "#iucn_species_summary",
+        "type": "object",
+        "title": "IUCN Red List Species Summary Container",
+        "description": "This container houses the summarized results for an IUCN Red List species when the species was found. Otherwise, it will be empty or not present.",
+        "default": null,
+        "required": [
+          "iucn_taxonid",
+          "iucn_status_code",
+          "iucn_status_name",
+          "record_date",
+          "iucn_secondary_identifier",
+          "resolvable_identifier",
+          "citation_string"
+        ],
+        "properties": {
+          "record_date": {
+            "$ref": "common_properties.json#/definitions/record_date"
+          },
+          "citation_string": {
+            "$ref": "common_properties.json#/definitions/citation_string"
+          },
+          "resolvable_identifier": {
+            "$ref": "common_properties.json#/definitions/resolvable_identifier"
+          },
+          "doi": {
+            "$ref": "common_properties.json#/definitions/doi"
+          },
+          "iucn_taxonid": {
+            "$id": "#iucn_taxonid",
+            "type": "integer",
+            "title": "The numeric IUCN taxon ID",
+            "description": "The internal taxon identifier used in the IUCN Red List system. Used together with a secondary identifier to create a resolvable reference and as a key identifier through the IUCN Red List API.",
+            "default": 0,
+            "examples": [
+              59435
+            ]
+          },
+          "iucn_status_code": {
+            "$id": "#iucn_status_code",
+            "type": "string",
+            "title": "The IUCN Conservation Status Code",
+            "description": "The conservation status code for a species (ref: https://www.iucnredlist.org/resources/categories-and-criteria)",
+            "examples": [
+              "NT"
+            ]
+          },
+          "iucn_status_name": {
+            "$id": "#iucn_status_name",
+            "type": "string",
+            "title": "IUCN Status Name",
+            "description": "The full name of the IUCN Red List Status (ref: https://www.iucnredlist.org/resources/categories-and-criteria).",
+            "examples": [
+              "Near Threatened"
+            ]
+          },
+          "iucn_population_trend": {
+            "$id": "#iucn_population_trend",
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "IUCN Red List Population Trend",
+            "description": "A categorical string indicating the overall trend for the population of a species.",
+            "examples": [
+              "Decreasing"
+            ]
+          },
+          "iucn_secondary_identifier": {
+            "$id": "#iucn_secondary_identifier",
+            "type": "string",
+            "title": "A secondary identifier for a species record in the IUCN Red List",
+            "description": "Secondary identifier extracted from a species citation string and used to generate a resolvable identifier.",
+            "examples": [
+              "11941314"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "definitions": {
+    "items": {0
+      "$id": "#/items",
+      "type": [
+        "object",
+        "array"
+      ],
+      "title": "Generic container for items in a dataset",
+      "description": "A JSON array or object property containing one or more items in a dataset or data structure within a dataset."
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://data.usgs.gov/property_registry/",
+  "type": "array",
+  "title": "TESS Schema",
+  "description": "A dataset containing summarized results from the USFWS Threatened and Endangered Species System pulled from its API. Data were assembled using a search function build into the experimental bispy software package (https://github.com/usgs-bcb/bispy).",
+  "items": {"$ref": "#/definitions/items"},
+    "properties": {
+      "processing_metadata": {"$ref": "common_properties.json#/definitions/processing_metadata"},
+      "tess_species": {
+        "$id": "#/items/properties/tess_species",
+        "type": "object",
+        "title": "The Tess_species Schema",
+        "description": "An explanation about the purpose of this instance.",
+        "required": [
+          "SPECIES_DETAIL"
+        ],
+        "properties": {
+          "SPECIES_DETAIL": {
+            "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL",
+            "type": [
+              "object",
+              "array"
+            ],
+            "title": "TESS Species",
+            "description": "An object or array containing properties from the Threatened and Endangered Species System retrieved via XQuery from an XML web service. An array of results will be used when more than one TESS record was found for the given API query.",
+            "required": [
+              "Scientific Name",
+              "Common Name",
+              "ENTITY_ID",
+              "SPCODE",
+              "VIPCODE",
+              "SCINAME",
+              "COMNAME",
+              "INVNAME",
+              "FAMILY",
+              "STATUS",
+              "STATUS_TEXT",
+              "TSN",
+              "DPS"
+            ],
+            "properties": {
+              "ENTITY_ID": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/ENTITY_ID",
+                "type": "string",
+                "title": "Entity ID",
+                "description": "Internal identifier used only within the TESS system.",
+                "examples": [
+                  "9143"
+                ]
+              },
+              "SPCODE": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/SPCODE",
+                "type": "string",
+                "title": "Species Code",
+                "description": "Internal species code used in the TESS system documented at http://bit.ly/30N2SEa.",
+                "examples": [
+                  "D03E"
+                ]
+              },
+              "VIPCODE": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/VIPCODE",
+                "type": "string",
+                "title": "VIP Code",
+                "description": "Internal species code used in the TESS system documented at http://bit.ly/30N2SEa.",
+                "examples": [
+                  "V01"
+                ]
+              },
+              "SCINAME": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/SCINAME",
+                "type": "string",
+                "title": "Scientific Name",
+                "description": "Scientific (latin) name for the biological species.",
+                "examples": [
+                  "Rhyacotriton cascadae"
+                ]
+              },
+              "COMNAME": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/COMNAME",
+                "type": "string",
+                "title": "Common Name",
+                "description": "Common (vernacular) name for the biological species.",
+                "examples": [
+                  "Cascade torrent salamander"
+                ]
+              },
+              "INVNAME": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/INVNAME",
+                "type": "string",
+                "title": "Inverted Common Name",
+                "description": "Inverted form of the common name used to group similar species.",
+                "examples": [
+                  "salamander, Cascade torrent"
+                ]
+              },
+              "POP_ABBREV": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/POP_ABBREV",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "Population Abbreviation",
+                "description": "Abbreviated form of the population designated for listing.",
+                "examples": [
+                  "Wherever found"
+                ]
+              },
+              "POP_DESC": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/POP_DESC",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "Population Description",
+                "description": "Longer description of the population designated for listing.",
+                "examples": [
+                  "Wherever found"
+                ]
+              },
+              "FAMILY": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/FAMILY",
+                "type": "string",
+                "title": "Taxonomic Family",
+                "description": "Family name for the species from the taxonomic tree.",
+                "examples": [
+                  "rhyacotritonidae"
+                ]
+              },
+              "STATUS": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/STATUS",
+                "type": "string",
+                "title": "Listing Status Code",
+                "description": "Listing status code documented here http://bit.ly/30Zk35H.",
+                "examples": [
+                  "UR"
+                ]
+              },
+              "STATUS_TEXT": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/STATUS_TEXT",
+                "type": "string",
+                "title": "Listing Status",
+                "description": "Text description of the listing status documented here http://bit.ly/30Zk35H.",
+                "examples": [
+                  "Under Review in the Candidate or Petition Process"
+                ]
+              },
+              "LEAD_AGENCY": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/LEAD_AGENCY",
+                "type": "string",
+                "title": "Lead Agency",
+                "description": "Lead U.S. Federal Agency under the Endangered Species Act.",
+                "examples": [
+                  "1"
+                ]
+              },
+              "LEAD_REGION": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/LEAD_REGION",
+                "type": "string",
+                "title": "Lead Region",
+                "description": "Lead USFWS Region number.",
+                "examples": [
+                  "6"
+                ]
+              },
+              "COUNTRY": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/COUNTRY",
+                "type": "string",
+                "title": "Country",
+                "description": "Internally used country code from the TESS system.",
+                "examples": [
+                  "1"
+                ]
+              },
+              "TSN": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/TSN",
+                "type": "string",
+                "title": "ITIS Taxonomic Serial Number",
+                "description": "Taxonomic Serial Number for the species from the Integrated Taxonomic Information System.",
+                "examples": [
+                  "550250"
+                ]
+              },
+              "DPS": {
+                "$id": "#/items/properties/tess_species/properties/SPECIES_DETAIL/properties/DPS",
+                "type": "string",
+                "title": "Distinct Population Segment",
+                "description": "A binary value indicating whether or not the listing is for a distinct population segment.",
+                "examples": [
+                  "0"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
